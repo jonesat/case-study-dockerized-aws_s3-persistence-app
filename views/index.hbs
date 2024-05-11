@@ -1,0 +1,19 @@
+<h1>{{title}}</h1>
+
+
+<div class="card" style="width: 36rem;">
+    <div >
+        <ul=class="list-group list-group-flush">
+            {{#each words}}
+            <li class="list-group-item">{{{this}}}</li>
+            {{/each}}
+        </ul>
+    </div>    
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">{{footer}}</span>
+  </div>
+</footer>

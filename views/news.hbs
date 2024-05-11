@@ -1,0 +1,46 @@
+{{#each news as |article index|}}
+
+<!-- Card for each news article -->
+<div class="card mb-4" style="border-radius:10px">
+  <div class="d-flex flex-row">
+    
+    <!-- News article on the left -->
+    <div class="col-md-4">
+      <div class="card-header">
+        <h5 class="mb-0">
+          {{article.title}}
+        </h5>
+      </div>
+      <div class="card-body">
+        <a href="{{article.url}}">{{article.source.name}}</a>
+        {{{article.description}}}
+      </div>
+    </div>
+        
+    <div class="col-md-8">
+        <div class="row">
+            {{#each article.photoData as |image imageIndex|}}
+            
+            <div class="col-md-3 mb-2">
+                <p>a</p>
+                <a href="{{image.fullUrl}}">
+                    <img class="card-img-top" style="width:100%; height:225px; object-fit: cover;" src="{{image.thumbUrl}}" alt="{{image.altText}}">
+                </a>
+            </div>
+
+            {{/each}}
+        </div>
+        </div>
+    
+    
+    
+  </div>
+</div>
+
+{{/each}}
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">{{footer}}</span>
+  </div>
+</footer>

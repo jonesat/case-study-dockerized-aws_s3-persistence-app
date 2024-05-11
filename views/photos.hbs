@@ -1,0 +1,47 @@
+<h1>{{title}}</h1>
+
+
+{{!-- <a href="{{this.fullUrl}}"><img alt="{{this.altText}}"src="{{this.thumbUrl}}"/></a> --}}
+
+{{#each photos as |photo index|}}
+<div class="card" style="border-radius:10px">
+  <div class="d-flex flex-row">
+    <div class="col-md-4">
+      <a href="{{photo.fullUrl}}"><img class="card-img-top" style="width:600; height:450px; object-fit: cover;" src="{{photo.thumbUrl}}" alt="{{photo.altText}}"></a>
+    </div>
+    
+    <div id="accordion">
+    {{#each photo.news as |story newIndex|}}  
+      <div class="card">      
+      <div class="card-header" id="f{{photo.id}}{{newIndex}}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapsef{{photo.id}}{{newIndex}}" aria-expanded="false" aria-controls="collapsef{{photo.id}}{{newIndex}}" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+            ({{photo.country}} News) {{story.title}}
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapsef{{photo.id}}{{newIndex}}" class="collapse" aria-labelledby="headingf{{photo.id}}{{newIndex}}" data-parent="#accordion">
+        <div class="card-body">
+          <a href="{{story.url}}">{{story.source.name}}</a>
+          {{story.description}}
+        </div>
+      </div>
+    </div>
+    {{/each}}  
+  </div>
+</div>
+{{/each}}
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">{{footer}}</span>
+  </div>
+</footer>
+
+
+<style>
+  .card-header:not(:first-child) .collapse.show {
+    display: none;
+}
+</style>
